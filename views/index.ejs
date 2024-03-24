@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cemetery Plot Search</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    #search-form { margin: 20px; font-size: larger; }
+    input {font-size: larger;}
+    div { margin: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+</style>
+</head>
+<body>
+  <h1>Cemetery Plot Search</h1>
+  <p>Enter as many values as are known and leave unknown fiends blank. Leave all fields blank for a list of all available records.</p>
+  <p>Fields are not case-sensitive and partial matches are accepted. For example, entering "john" in the Last Name field could return records with a last name of "Johnson" "Lajohn", and "Johnston".</p>
+    <form action="/search" method="get" id="search-form">
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+        </div>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+        </div>
+        <div>
+            <label for="birthYear">Birth Year:</label>
+            <input type="number" id="birthYear" name="birthYear" min="1700" max="2050">
+        </div>
+        <div>
+            <label for="deathYear">Death Year:</label>
+            <input type="number" id="deathYear" name="deathYear" min="1700" max="2050">
+        </div>
+        <button type="submit">Search</button>
+    </form>
+    <h1>Search Results</h1>
+    <% if(records) { %>
+    <table>
+        <tr>
+            <th>Last Name</th>
+            <th>Maiden Name</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Title</th>
+            <th>Birth Date</th>
+            <th>Death Date</th>
+            <th>Age</th>
+            <th>Is Veteran</th>
+            <th>Section</th>
+            <th>Lot</th>
+            <th>Moved From</th>
+            <th>Moved To Lot</th>
+            <th>Notes</th>
+        </tr>
+        <% records.forEach(function(record) { %>
+            <tr>
+              <% for(let field in record) { %>
+                <td><%= record[field] %></td>
+              <% } %>
+            </tr>
+        <% }); %>
+    </table>
+    <% } else {"No records returned."} %>
+</body>
+</html>

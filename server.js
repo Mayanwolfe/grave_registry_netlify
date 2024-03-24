@@ -61,7 +61,6 @@ app.get('/search', async (req, res) => {
           throw error;
       }
       console.log(data)
-      // Render the search results using the 'search_results' template
       res.render('index', { records: data });
   } catch (error) {
       console.error('Error:', error.message);

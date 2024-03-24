@@ -6,7 +6,8 @@
   <title>Cemetery Plot Search</title>
   <style>
     body { font-family: Arial, sans-serif; }
-    #search-form { margin: 20px; font-size: larger; }
+    form { margin: 20px; font-size: larger; }
+    button {font-size: larger;}
     input {font-size: larger;}
     div { margin: 20px; }
     table { width: 100%; border-collapse: collapse; }
@@ -17,7 +18,7 @@
 <body>
   <h1>Cemetery Plot Search</h1>
   <p>Enter as many values as are known and leave unknown fiends blank. Leave all fields blank for a list of all available records.</p>
-  <p>Fields are not case-sensitive and partial matches are accepted. For example, entering "john" in the Last Name field could return records with a last name of "Johnson" "Lajohn", and "Johnston".</p>
+  <p>Fields are not case-sensitive and partial matches are accepted. For example, entering "mill" in the Last Name field could return records with a last name of "Miller" "Hamill", and "Mill".</p>
     <form action="/search" method="get" id="search-form">
         <div>
             <label for="lastName">Last Name:</label>

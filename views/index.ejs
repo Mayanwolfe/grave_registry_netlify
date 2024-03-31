@@ -6,6 +6,11 @@
   <title>Cemetery Plot Search</title>
   <style>
     body { font-family: Arial, sans-serif; }
+    header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+    }
     form { margin: 20px; font-size: larger; }
     button {font-size: larger;}
     input {font-size: larger;}
@@ -16,7 +21,10 @@
 </style>
 </head>
 <body>
-  <h1>Cemetery Plot Search</h1>
+    <header>
+  <h1>Grandview Cemetery Plot Search</h1>
+  <a href="/updatePage">Update a Record (requires login)</a>
+</header>
   <p>Enter as many values as are known and leave unknown fiends blank. Leave all fields blank for a list of all available records.</p>
   <p>Fields are not case-sensitive and partial matches are accepted. For example, entering "mill" in the Last Name field could return records with a last name of "Miller" "Hamill", and "Mill".</p>
     <form action="/search" method="get" id="search-form">

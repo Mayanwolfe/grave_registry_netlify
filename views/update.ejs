@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { margin: 20px; font-size: larger; }
+        button {font-size: larger;}
+        input {font-size: larger;}
+        div { margin: 20px; }
+        </style>
+</head>
+<body>
+    <form action="/" method="get">
+        <button type="submit">Return Home</button>
+      </form>
+      <form action="/logout" method="get">
+        <button type="submit">Logout</button>
+      </form>
+    <h1>Update a Grave Record</h1>
+    <p>Enter the Memorial ID of a specific record to see its information.</p>
+    <p>Make changes as needed, then click "Save Changes" to save the changes to the database. Please verify the changes are accurate prior to saving.</p>
+    <form action="/getUpdateRecord" method="get">
+        <label for="memorialID">Interment ID to Update:</label>
+        <input type="number" id="memorialID" name="memorialID">
+        <button type="submit">Search</button>
+    </form>
+
+    <h1>Search Results</h1>
+    <% if(record) { %>
+        <form action="/updateRecord" method="post">
+            <% for(let field in record) { %>
+                <label for="<%= field %>"><%= field %></label>
+                <input type="text" value="<%= record[field] %>" name="<%= field %>" id="<%= field %>" <%= field === 'memorial_ID' ? 'readonly="readonly"' : '' %>>
+              <% } %>              
+            <button type="submit">Update This Record</button>
+        </form>
+    <% } else if (message) { %>
+        <p><%= message %></p>
+    
+    <% } else {  %>
+        <p>Enter a valid Memorial ID to search.</p>
+    <% } %>   
+</body>
+</html>

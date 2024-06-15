@@ -5,11 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cemetery Plot Search</title>
   <style>
-    body { font-family: Arial, sans-serif; }
+
+html, body {
+  height: 100%;
+}
+    body { 
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    margin-left: 2%;
+    display: flex;
+  flex-direction: column;
+     }
     header {
    display: flex;
    justify-content: space-between;
    align-items: center;
+    }
+    .content {
+  flex: 1 0 auto;
     }
     form { margin: 20px; font-size: larger; }
     button {font-size: larger;}
@@ -18,16 +31,21 @@
     table { width: 100%; border-collapse: collapse; }
     th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
     th { background-color: #f2f2f2; }
+    footer {
+      flex-shrink: 0;
+    }
 </style>
 </head>
 <body>
-    <header>
+  <div class="content">
+<header>
   <h1>Grandview Cemetery Plot Search</h1>
-  <a href="/updatePage">Update a Record (requires login)</a>
+  <a href="/.netlify/functions/updatePage">Update a Record (requires login)</a>
 </header>
+<h3><a href="/assets/Grandview_Map.jpg">Click here for a high-resolution map of the cemetery.</a></h3>
   <p>Enter as many values as are known and leave unknown fiends blank. Leave all fields blank for a list of all available records.</p>
   <p>Fields are not case-sensitive and partial matches are accepted. For example, entering "mill" in the Last Name field could return records with a last name of "Miller" "Hamill", and "Mill".</p>
-    <form action="/search" method="get" id="search-form">
+  <form action="/.netlify/functions/search" method="get" id="search-form">
         <div>
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" name="lastName">
@@ -47,24 +65,31 @@
         <button type="submit">Search</button>
     </form>
     <h1>Search Results</h1>
+    <span>To correct or update a record, contact the museum docent to log in.</span>
     <% if(records) { %>
     <table>
         <tr>
-            <th>Last Name</th>
-            <th>Maiden Name</th>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Title</th>
-            <th>Birth Date</th>
-            <th>Death Date</th>
-            <th>Age</th>
-            <th>Is Veteran</th>
-            <th>Section</th>
-            <th>Lot</th>
-            <th>Moved From</th>
-            <th>Moved To Lot</th>
-            <th>Notes</th>
+          <th>ID</th>
+          <th>TITLE</th>
+          <th>LAST NAME</th>
+          <th>FIRST NAME</th>
+          <th>MIDDLE</th>
+          <th>MAIDEN</th>
+          <th>BIRTH YEAR</th>
+          <th>BIRTH MONTH</th>
+          <th>BIRTH DAY</th>
+          <th>DEATH YEAR</th>
+          <th>DEATH MONTH</th>
+          <th>DEATH DAY</th>
+          <th>AGE</th>
+          <th>SECTION</th>
+          <th>LOT</th>
+          <th>IS VET</th>
+          <th>NOTES</th>
+          <th>MOVED FROM</th>
+          <th>MOVED TO</th>
         </tr>
+        
         <% records.forEach(function(record) { %>
             <tr>
               <% for(let field in record) { %>
@@ -74,5 +99,10 @@
         <% }); %>
     </table>
     <% } else {"No records returned."} %>
+
+  </div>
+<footer>
+<p>Coded from scratch by Claire Bourdon (<a href="https://mayanwolfe.com">personal site</a>) using EJS and Supabase. Hosted on Netlify.</p>
+</footer>
 </body>
 </html>

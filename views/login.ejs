@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
     <style>
-    body { font-family: Arial, sans-serif; }
+        body { 
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    margin-left: 2%
+     }
     form { margin: 20px; font-size: larger; }
     button {font-size: larger;}
     input {font-size: larger;}
@@ -19,10 +23,10 @@
     <h1>Admin Login</h1>
     <p>Enter the administrator login and password to make changes to cemetary records.</p>
     <h2>This session will expire in 10 minutes.</h2>
-    <form action="/login" method="POST" id="login-form">
+    <form action="/.netlify/functions/login" method="POST" id="login-form">
         <div>
             <label for="username">User Name:</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" readonly="readonly" value="admin@cottage.com">
         </div>
         <div>
             <label for="password">Password:</label>

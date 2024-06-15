@@ -23,7 +23,7 @@
     <h1>Admin Login</h1>
     <p>Enter the administrator login and password to make changes to cemetary records.</p>
     <h2>This session will expire in 10 minutes.</h2>
-    <form action="/.netlify/functions/login" method="GET" id="login-form">
+    <form action="/.netlify/functions/login" method="POST" id="login-form">
         <div>
             <label for="username">User Name:</label>
             <input type="text" id="username" name="username" readonly="readonly" value="admin@cottage.com">

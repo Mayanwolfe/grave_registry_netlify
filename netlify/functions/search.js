@@ -40,10 +40,9 @@ exports.handler = async function(event, context) {
   try {
     console.log('query ready')
     let { data, error } = await query;
-    console.log(data)
     if (error) throw error;
 
-    const templatePath = path.resolve(__dirname, '/');
+    const templatePath = path.resolve(__dirname, '../../public/views/index.ejs');
     const html = await ejs.renderFile(templatePath, { records: data });
 
     return {

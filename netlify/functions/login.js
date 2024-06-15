@@ -13,7 +13,8 @@ exports.handler = async function(event, context) {
     };
   }
 
-  const { username, password } = JSON.parse(event.body);
+  console.log(event.queryStringParameters)
+  const { username, password } = event.queryStringParameters;
   console.log(username, password)
 
   let { data, error } = await supabase.auth.signInWithPassword({

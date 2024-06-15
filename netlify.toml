@@ -7,3 +7,8 @@
   from = "/*"
   to = "/.netlify/functions/renderIndex"
   status = 200
+
+
+# Ensure views directory is included in the deployment
+[context.production.environment]
+  VIEWS_DIR = "views"

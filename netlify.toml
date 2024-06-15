@@ -6,3 +6,6 @@
   from = "/*"
   to = "/.netlify/functions/renderIndex"
   status = 200
+
+[functions]
+  included_files = ["public/views/**"]

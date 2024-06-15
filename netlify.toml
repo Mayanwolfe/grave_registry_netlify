@@ -1,13 +1,9 @@
 [build]
   publish = "public"
   functions = "netlify/functions"
+  base = "."
 
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/renderIndex"
-  status = 200
-
-[[redirects]]
-  from = "/updatePage"
-  to = "/.netlify/functions/updatePage"
   status = 200

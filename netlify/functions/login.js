@@ -6,12 +6,6 @@ const cookie = require('cookie');
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API_KEY);
 
 exports.handler = async function(event, context) {
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: 'Method Not Allowed'
-    };
-  }
 
   console.log(event.queryStringParameters)
   const { username, password } = event.queryStringParameters;

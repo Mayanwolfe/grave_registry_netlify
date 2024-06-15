@@ -14,6 +14,7 @@ exports.handler = async function(event, context) {
   }
 
   const { username, password } = JSON.parse(event.body);
+  console.log(username, password)
 
   let { data, error } = await supabase.auth.signInWithPassword({
     email: username,
@@ -22,7 +23,7 @@ exports.handler = async function(event, context) {
 
   if (error) {
     console.error('Login error', error.message);
-    const templatePath = path.resolve(__dirname, '../views/login.ejs');
+    const templatePath = path.resolve(__dirname, '../../public/views/login.ejs');
     const html = await ejs.renderFile(templatePath, { message: 'Login failed. Please try again or contact a library administrator.' });
 
     return {
@@ -41,7 +42,9 @@ exports.handler = async function(event, context) {
     })
   };
 
-  const templatePath = path.resolve(__dirname, '../views/update.ejs');
+  console.log(headers)
+
+  const templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
   const html = await ejs.renderFile(templatePath, { record: null, message: null });
 
   return {

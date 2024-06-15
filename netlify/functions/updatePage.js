@@ -13,10 +13,10 @@ exports.handler = async function(event, context) {
     let data;
 
     if (authenticated) {
-      templatePath = path.resolve(__dirname, '../views/update.ejs');
+      templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
       data = { record: null, message: null };
     } else {
-      templatePath = path.resolve(__dirname, '../views/login.ejs');
+      templatePath = path.resolve(__dirname, '../../public/views/login.ejs');
       data = {};
     }
 

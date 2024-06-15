@@ -49,10 +49,10 @@ exports.handler = async function(event, context) {
     let templateData;
 
     if (dataObject) {
-      templatePath = path.resolve(__dirname, '../views/update.ejs');
+      templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
       templateData = { record: dataObject, message: null };
     } else {
-      templatePath = path.resolve(__dirname, '../views/update.ejs');
+      templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
       templateData = { record: null, message: 'No matching record found. Please check the value and try again.' };
     }
 

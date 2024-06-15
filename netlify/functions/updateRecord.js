@@ -34,7 +34,7 @@ exports.handler = async function(event, context) {
   const authenticated = cookies.authenticated === 'true';
 
   if (!authenticated) {
-    const templatePath = path.resolve(__dirname, '../views/login.ejs');
+    const templatePath = path.resolve(__dirname, '../../public/views/login.ejs');
     const html = await ejs.renderFile(templatePath, {});
     return {
       statusCode: 200,
@@ -48,7 +48,7 @@ exports.handler = async function(event, context) {
   try {
     await updateRecordInSupabase(formData);
 
-    const templatePath = path.resolve(__dirname, '../views/update.ejs');
+    const templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
     const html = await ejs.renderFile(templatePath, { record: null, message: 'Record Updated Successfully' });
 
     return {
@@ -58,7 +58,7 @@ exports.handler = async function(event, context) {
     };
   } catch (error) {
     console.error('Error updating record:', error);
-    const templatePath = path.resolve(__dirname, '../views/update.ejs');
+    const templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
     const html = await ejs.renderFile(templatePath, { record: null, message: 'Error Updating Record. Please try again.' });
 
     return {

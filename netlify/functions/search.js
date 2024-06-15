@@ -38,7 +38,9 @@ exports.handler = async function(event, context) {
   if (deathYear) query = query.eq('DEATH_YEAR', deathYear);
 
   try {
+    console.log('query ready')
     let { data, error } = await query;
+    console.log(data)
     if (error) throw error;
 
     const templatePath = path.resolve(__dirname, '/');

@@ -17,7 +17,7 @@ exports.handler = async function(event, context) {
       data = { record: null, message: null };
     } else {
       templatePath = path.resolve(__dirname, '../../public/views/login.ejs');
-      data = {message: null};
+      data = {message: 'Session has timed out. Please log in again.'};
     }
 
     // Render the appropriate template

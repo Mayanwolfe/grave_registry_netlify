@@ -2,12 +2,13 @@ const { createClient } = require('@supabase/supabase-js');
 const ejs = require('ejs');
 const path = require('path');
 const cookie = require('cookie');
+const querystring = require('querystring');
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API_KEY);
 
 exports.handler = async function(event, context) {
-
-  const { username, password } = event.queryStringParameters;
+  console.log(event)
+  const { username, password } = querystring.parse(event.body);
 
   let { data, error } = await supabase.auth.signInWithPassword({
     email: username,

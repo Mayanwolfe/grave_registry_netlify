@@ -2,9 +2,11 @@ const { createClient } = require('@supabase/supabase-js');
 const ejs = require('ejs');
 const path = require('path');
 
+//connect to Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API_KEY);
 
 exports.handler = async function(event, context) {
+  console.log(event)
   const { lastName, firstName, birthYear, deathYear } = event.queryStringParameters;
 
   let query = supabase

@@ -2,18 +2,15 @@ const { createClient } = require('@supabase/supabase-js');
 const ejs = require('ejs');
 const path = require('path');
 const cookie = require('cookie');
+const querystring = require('querystring');
 
 async function updateRecordInSupabase(supabase, formData) {
   try {
-    console.log('formData', formData)
-    const recordId = formData.ID;
-    delete formData.ID; // Remove the unique identifier to prevent updating it
     const { data, error } = await supabase
             .from('grave_registry')
             .update(formData)
-            .eq('ID', recordId );
+            .eq('ID', formData.ID );
     if (error) throw error;
-    console.log(data)
   } catch (error) {
     console.error('Error updating record in Supabase:', error);
     throw error; // Rethrow the error to be handled by the calling function
@@ -45,13 +42,12 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API
     };
   }
 
-  const formData = event.queryStringParameters
+  const formData = querystring.parse(event.body);
 
   try {
     await updateRecordInSupabase(supabase, formData);
-
     const templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
-    const html = await ejs.renderFile(templatePath, { record: null, message: 'Record Updated Successfully' });
+    const html = await ejs.renderFile(templatePath, { record: null, message: `Record ${formData.ID} has been updated successfully.` });
 
     return {
       statusCode: 200,

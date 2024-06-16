@@ -34,7 +34,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API
 
   if (!token) {
     const templatePath = path.resolve(__dirname, '../../public/views/login.ejs');
-    const html = await ejs.renderFile(templatePath, {});
+    const html = await ejs.renderFile(templatePath, {message: 'Session has timed out. Please log in again.'});
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'text/html' },
@@ -43,6 +43,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API
   }
 
   const formData = querystring.parse(event.body);
+  console.log(formData)
 
   try {
     await updateRecordInSupabase(supabase, formData);

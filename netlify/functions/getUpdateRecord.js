@@ -5,12 +5,6 @@ const path = require('path');
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API_KEY);
 
 exports.handler = async function(event, context) {
-  if (event.httpMethod !== 'GET') {
-    return {
-      statusCode: 405,
-      body: 'Method Not Allowed'
-    };
-  }
 
   const memorialID = event.queryStringParameters.memorialID;
 

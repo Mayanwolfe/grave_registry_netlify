@@ -1,15 +1,11 @@
 const cookie = require('cookie');
 
 exports.handler = async function(event, context) {
-  if (event.httpMethod !== 'GET') {
-    return {
-      statusCode: 405,
-      body: 'Method Not Allowed'
-    };
-  }
+    const cookies = cookie.parse(event.headers.cookie || '');
+    const token = cookies.token;
 
   const headers = {
-    'Set-Cookie': cookie.serialize('authenticated', '', {
+    'Set-Cookie': cookie.serialize('token', token, {
       httpOnly: true,
       maxAge: -1, // Expire the cookie immediately
       sameSite: 'strict',

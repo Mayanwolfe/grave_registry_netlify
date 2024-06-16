@@ -6,18 +6,18 @@ exports.handler = async function(event, context) {
   try {
     // Parse cookies from the request headers
     const cookies = cookie.parse(event.headers.cookie || '');
-    const authenticated = cookies.authenticated === 'true';
+    const token = cookies.token;
 
     // Determine the template to render based on authentication status
     let templatePath;
     let data;
 
-    if (authenticated) {
+    if (token) {
       templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
       data = { record: null, message: null };
     } else {
       templatePath = path.resolve(__dirname, '../../public/views/login.ejs');
-      data = {};
+      data = {message: null};
     }
 
     // Render the appropriate template

@@ -7,9 +7,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API
 
 exports.handler = async function(event, context) {
 
-  console.log(event.queryStringParameters)
   const { username, password } = event.queryStringParameters;
-  console.log(username, password)
 
   let { data, error } = await supabase.auth.signInWithPassword({
     email: username,
@@ -28,8 +26,9 @@ exports.handler = async function(event, context) {
     };
   }
 
+  const token = data.session.access_token;
   const headers = {
-    'Set-Cookie': cookie.serialize('authenticated', 'true', {
+    'Set-Cookie': cookie.serialize('token', token, {
       httpOnly: true,
       maxAge: 600, // 10 minutes
       sameSite: 'strict',
@@ -37,7 +36,6 @@ exports.handler = async function(event, context) {
     })
   };
 
-  console.log(headers)
 
   const templatePath = path.resolve(__dirname, '../../public/views/update.ejs');
   const html = await ejs.renderFile(templatePath, { record: null, message: null });

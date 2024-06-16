@@ -3,9 +3,14 @@
   functions = "netlify/functions"
 
 [[redirects]]
-  from = "/*"
+  from = "/"
   to = "/.netlify/functions/renderIndex"
   status = 200
+
+[[redirects]]
+from = "/search"
+to = "/.netlify/functions/search"
+status = 200
 
 [functions]
   included_files = ["public/views/**"]

@@ -10,6 +10,8 @@ exports.handler = async function (event, context) {
   //Destructuring assignment of variables based on the GET query object 
   const { lastName, firstName, birthYear, deathYear } = event.queryStringParameters;
 
+  //console.log(event)
+
   //build the query
   let query = supabase
     .from('grave_registry')

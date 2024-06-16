@@ -1,8 +1,9 @@
 const ejs = require('ejs');
 const path = require('path');
+//Handle authentication
 const cookie = require('cookie');
 
-exports.handler = async function(event, context) {
+exports.handler = async function (event, context) {
   try {
     // Parse cookies from the request headers
     const cookies = cookie.parse(event.headers.cookie || '');
@@ -17,7 +18,7 @@ exports.handler = async function(event, context) {
       data = { record: null, message: null };
     } else {
       templatePath = path.resolve(__dirname, '../../public/views/login.ejs');
-      data = {message: 'Session has timed out. Please log in again.'};
+      data = { message: 'Session has timed out. Please log in again.' };
     }
 
     // Render the appropriate template

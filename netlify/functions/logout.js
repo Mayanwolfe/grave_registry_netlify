@@ -1,9 +1,13 @@
+//Used to validate loggeed-in users
 const cookie = require('cookie');
 
-exports.handler = async function(event, context) {
-    const cookies = cookie.parse(event.headers.cookie || '');
-    const token = cookies.token;
+exports.handler = async function (event, context) {
+  //Get the existing cookie from the header
+  const cookies = cookie.parse(event.headers.cookie || '');
+  //Get the token from the cookie object
+  const token = cookies.token;
 
+  //Modify the headers to force expiration of the cookie
   const headers = {
     'Set-Cookie': cookie.serialize('token', token, {
       httpOnly: true,

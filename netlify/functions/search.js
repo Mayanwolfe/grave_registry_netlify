@@ -5,10 +5,12 @@ const path = require('path');
 //connect to Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API_KEY);
 
-exports.handler = async function(event, context) {
-  console.log(event)
+exports.handler = async function (event, context) {
+
+  //Destructuring assignment of variables based on the GET query object 
   const { lastName, firstName, birthYear, deathYear } = event.queryStringParameters;
 
+  //build the query
   let query = supabase
     .from('grave_registry')
     .select(`
@@ -32,18 +34,20 @@ exports.handler = async function(event, context) {
       MOVED_FROM,
       MOVED_TO
     `)
-    .order('SURNAME', { ascending: true });
+    .order('SURNAME', { ascending: true }); //Order by last name in A-Z order
 
-  if (lastName) query = query.ilike('SURNAME', `%${lastName}%`);
-  if (firstName) query = query.ilike('FIRSTNAME', `%${firstName}%`);
-  if (birthYear) query = query.eq('BIRTH_YEAR', birthYear);
-  if (deathYear) query = query.eq('DEATH_YEAR', deathYear);
+  //Add optional elements to the query, based on the fields the user submitted
+  if (lastName) query = query.ilike('SURNAME', `%${lastName}%`); //fuzzy match
+  if (firstName) query = query.ilike('FIRSTNAME', `%${firstName}%`); //fuzzy match
+  if (birthYear) query = query.eq('BIRTH_YEAR', birthYear); //exact match
+  if (deathYear) query = query.eq('DEATH_YEAR', deathYear); //exact match
 
   try {
-    console.log('query ready')
+    //try the query against the DB
     let { data, error } = await query;
     if (error) throw error;
 
+    //Pass through the search result(s) and rerender the EJS as HTML
     const templatePath = path.resolve(__dirname, '../../public/views/index.ejs');
     const html = await ejs.renderFile(templatePath, { records: data });
 

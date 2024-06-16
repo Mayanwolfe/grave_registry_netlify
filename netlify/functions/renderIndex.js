@@ -1,10 +1,10 @@
 const ejs = require('ejs');
 const path = require('path');
 
-exports.handler = async function(event, context) {
+exports.handler = async function (event, context) {
   try {
 
-    //retrieve page to render
+    //retrieve page and render it as HTML
     const templatePath = path.resolve(__dirname, '../../public/views/index.ejs');
     const html = await ejs.renderFile(templatePath, { records: null });
 

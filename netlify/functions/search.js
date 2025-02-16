@@ -14,35 +14,35 @@ exports.handler = async function (event, context) {
 
   //build the query
   let query = supabase
-    .from('grave_registry')
+    .from('grave_register_formatted_2')
     .select(`
-      ID,
-      TITLE,
-      SURNAME,
-      FIRSTNAME,
-      MIDDLE,
-      MAIDEN,
-      BIRTH_YEAR,
-      BIRTH_MONTH,
-      BIRTH_DAY,
-      DEATH_YEAR,
-      DEATH_MONTH,
-      DEATH_DAY,
-      AGE,
-      SECTION,
-      LOT,
-      IS_VET,
-      NOTES,
-      MOVED_FROM,
-      MOVED_TO
+      memorial_id,
+      prefix,
+      last_name,
+      first_name,
+      middle_name,
+      maiden_name,
+      birth_year,
+      birth_month,
+      birth_day,
+      death_year,
+      death_month,
+      death_day,
+      age,
+      section,
+      lot,
+      is_vet),
+      notes,
+      moved_from,
+      moved_to
     `)
-    .order('SURNAME', { ascending: true }); //Order by last name in A-Z order
+    .order('last_name', { ascending: true }); //Order by last name in A-Z order
 
   //Add optional elements to the query, based on the fields the user submitted
-  if (lastName) query = query.ilike('SURNAME', `%${lastName}%`); //fuzzy match
-  if (firstName) query = query.ilike('FIRSTNAME', `%${firstName}%`); //fuzzy match
-  if (birthYear) query = query.eq('BIRTH_YEAR', birthYear); //exact match
-  if (deathYear) query = query.eq('DEATH_YEAR', deathYear); //exact match
+  if (lastName) query = query.ilike('last_name', `%${lastName}%`); //fuzzy match
+  if (firstName) query = query.ilike('first_name', `%${firstName}%`); //fuzzy match
+  if (birthYear) query = query.eq('birth_year', birthYear); //exact match
+  if (deathYear) query = query.eq('death_year', deathYear); //exact match
 
   try {
     //try the query against the DB

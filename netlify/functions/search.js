@@ -28,10 +28,10 @@ exports.handler = async function (event, context) {
       death_year,
       death_month,
       death_day,
-      age,
+      age_sane,
       section,
       lot,
-      is_vet),
+      is_vet,
       notes,
       moved_from,
       moved_to

@@ -18,7 +18,7 @@ exports.handler = async function (event, context) {
 
   //Use Supabase's built-in authentication to log in and permit write access to the DB. Also provides a token to use later.
   let { data, error } = await supabase.auth.signInWithPassword({
-    email: username,
+    email: 'admin@cottage.com',
     password: password,
   });
 

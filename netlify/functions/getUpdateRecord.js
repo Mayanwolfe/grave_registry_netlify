@@ -26,27 +26,26 @@ exports.handler = async function (event, context) {
 
   //Set up query
   let query = supabase
-    .from('grave_registry')
-    .select(`
-      ID,
-      TITLE,
-      SURNAME,
-      FIRSTNAME,
-      MIDDLE,
-      MAIDEN,
-      BIRTH_MONTH,
-      BIRTH_DAY,
-      BIRTH_YEAR,
-      DEATH_MONTH,
-      DEATH_DAY,
-      DEATH_YEAR,
-      AGE,
-      SECTION,
-      LOT,
-      IS_VET,
-      NOTES,
-      MOVED_FROM,
-      MOVED_TO
+  .from('grave_register')
+  .select(`
+    memorial_id,
+    prefix,
+    last_name,
+    first_name,
+    middle_name,
+    maiden_name,
+    birth_year,
+    birth_month,
+    birth_day,
+    death_year,
+    death_month,
+    death_day,
+    section,
+    lot,
+    is_vet,
+    notes,
+    moved_from,
+    moved_to
     `)
     .eq('ID', memorialID);
 

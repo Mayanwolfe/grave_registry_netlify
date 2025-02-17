@@ -12,7 +12,7 @@ async function updateRecordInSupabase(supabase, formData) {
 
     // Fetch the current record from the database to compare against submission
     const { data: currentData, error: fetchError } = await supabase
-      .from('grave_registry')
+      .from('grave_register')
       .select('*')
       .eq('ID', recordId)
       .single();
@@ -37,7 +37,7 @@ async function updateRecordInSupabase(supabase, formData) {
 
     // Perform the update with the constructed payload
     const { data, error: updateError } = await supabase
-      .from('grave_registry')
+      .from('grave_register')
       .update(updatePayload)
       .eq('ID', recordId);
 

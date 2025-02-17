@@ -47,7 +47,7 @@ exports.handler = async function (event, context) {
     moved_from,
     moved_to
     `)
-    .eq('ID', memorialID);
+    .eq('memorial_id', memorialID);
 
   //Execute query and handle errors
   try {

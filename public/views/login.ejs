@@ -12,7 +12,10 @@
      }
     form { margin: 20px; font-size: larger; }
     button {font-size: larger;}
-    input {font-size: larger;}
+    input {
+        font-size: larger;
+        color: white;
+    }
     div { margin: 20px; }
     </style>
 </head>
@@ -26,7 +29,7 @@
     <form action="/.netlify/functions/login" method="POST" id="login-form">
         <div>
             <label for="password">Password:</label>
-            <input type="hidden" id="password" name="password">
+            <input type="text" id="password" name="password">
         </div>
         <button type="submit">Login</button>
         <h3><%= message %></h3>

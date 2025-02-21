@@ -49,16 +49,79 @@
             <th>Value</th>
         </tr>
         <form action="/.netlify/functions/updateRecord" method="POST">
-            <% for(let field in record) { %>
-                <tr>
-                <td>
-                    <label for="<%= field %>"><%= field === 'ID' ? 'ID (cannot be changed)' : field %></label>
-                </td>
-                <td>
-                    <input type="text" value="<%= record[field] %>" name="<%= field %>" id="<%= field %>" <%= field === 'ID' ? 'readonly="readonly"' : '' %>>
-                </td>
-                </tr>
-              <% } %>              
+            <tr>
+                <td><label for="memorial_id">Memorial ID</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" ></td>
+            </tr>
+            <tr>
+                <td><label for="title">Title</label></td>
+                <td><input type="text" value="<%= record[title] %>" name="title" ></td>
+            </tr>
+                <td><label for="last_name">Last Name</label></td>
+                <td><input type="text" value="<%= record[last_name] %>" name="last_name" ></td>
+            </tr>
+            <tr>
+                <td><label for="first_name">First Name</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="middle_name">Middle Name</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="maiden_name">Maiden Name</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="birth_year">Birth Year</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="birth_month">Birth Month</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="birth_day">Birth Day</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="death_year">Death Year</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="death_month">Death Month</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="death_day">Death Day</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="veteran">Is Veteran</label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="section"><%= field  %></label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="lot"><%= field  %></label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="notes"><%= field  %></label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="moved_from"><%= field  %></label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+                <td><label for="moved_to"><%= field  %></label></td>
+                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" readonly="readonly" : ''></td>
+            </tr>
+            <tr>
+          
             <button type="submit">Update This Record</button>
         </form>
         </table>

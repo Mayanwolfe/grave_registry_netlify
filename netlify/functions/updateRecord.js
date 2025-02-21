@@ -24,7 +24,7 @@ async function updateRecordInSupabase(supabase, formData) {
     // Construct the update payload with only changed fields by comparing against old record
     const updatePayload = {};
     for (const key in formData) {
-      if (formData[key] !== currentData[key] && key !== 'ID') {
+      if (formData[key] !== currentData[key] && key !== 'memorial_id') {
         updatePayload[key] = formData[key];
       }
     }
@@ -39,7 +39,7 @@ async function updateRecordInSupabase(supabase, formData) {
     const { data, error: updateError } = await supabase
       .from('grave_register')
       .update(updatePayload)
-      .eq('ID', recordId);
+      .eq('memorial_id', recordId);
 
     if (updateError) {
       throw updateError;

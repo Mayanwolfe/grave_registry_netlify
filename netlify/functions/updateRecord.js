@@ -8,7 +8,7 @@ const querystring = require('querystring');
 
 async function updateRecordInSupabase(supabase, formData) {
   try {
-    const recordId = formData.ID;
+    const recordId = formData.memorial_id;
 
     // Fetch the current record from the database to compare against submission
     const { data: currentData, error: fetchError } = await supabase

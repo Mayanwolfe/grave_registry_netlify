@@ -46,7 +46,7 @@ html, body {
 </header>
   <p>Submit feedback and questions here.</p>
   
-  <form action="/feedback" method="POST" id="feedback-form">
+  <form action="/.netlify/functions/insertFeedback" method="POST" id="feedback-form">
     <label for="report_type">Feedback Type</label>
     <select name="report_type" id="report_type">
       <option value="bug">Bug/Issue</option>

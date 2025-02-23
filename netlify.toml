@@ -12,5 +12,10 @@ from = "/search"
 to = "/.netlify/functions/search"
 status = 200
 
+[[redirects]]
+from = "/feedback_page"
+to = "/.netlify/functions/renderFeedback"
+status = 200
+
 [functions]
   included_files = ["public/views/**"]

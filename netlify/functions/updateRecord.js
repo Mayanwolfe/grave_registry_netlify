@@ -35,8 +35,6 @@ async function updateRecordInSupabase(supabase, formData) {
       return { message: 'No fields were changed', data: currentData };
     }
 
-    console.log('Update payload:', updatePayload);
-
     // Perform the update with the constructed payload
     const { data, error: updateError } = await supabase
       .from('grave_register')

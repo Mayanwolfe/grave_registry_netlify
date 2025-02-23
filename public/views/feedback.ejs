@@ -56,10 +56,10 @@ html, body {
     <textarea name="report_body" id="report_body"></textarea>
   </form>
     
-  <% if (response) { %>
-    <p>Feedback submitted successfully</p>
+  <% if (message) { %>
+    <p><%= message %></p>
 
-  <% }
+  <% } %>
 
 <footer>
 <p>Coded from scratch by Claire Bourdon (<a href="https://mayanwolfe.com">personal site</a>) using EJS and Supabase. Hosted on Netlify.</p>

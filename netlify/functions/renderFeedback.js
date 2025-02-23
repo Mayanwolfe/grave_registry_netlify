@@ -17,7 +17,7 @@ exports.handler = async function (event, context) {
 
     //handle failure
   } catch (error) {
-    console.error('Error rendering index.ejs:', error.message);
+    console.error('Error rendering feedback.ejs:', error.message);
     return {
       statusCode: 500,
       body: 'Internal Server Error'

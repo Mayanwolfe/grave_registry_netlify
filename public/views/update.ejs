@@ -51,82 +51,8 @@
         <form action="/.netlify/functions/updateRecord" method="POST">
             <tr>
                 <td><label for="memorial_id">Memorial ID</label></td>
-                <td><input type="text" value="<%= record[memorial_id] %>" name="memorial_id" ></td>
+                <td><input type="text" value="<%= record.memorial_id %>" name="memorial_id" ></td>
             </tr>
-            <tr>
-                <td><label for="title">Title</label></td>
-                <td><input type="text" value="<%= record[title] %>" name="title" ></td>
-            </tr>
-                <td><label for="last_name">Last Name</label></td>
-                <td><input type="text" value="<%= record[last_name] %>" name="last_name" ></td>
-            </tr>
-            <tr>
-                <td><label for="first_name">First Name</label></td>
-                <td><input type="text" value="<%= record[first_name] %>" name="first_name"></td>
-            </tr>
-            <tr>
-                <td><label for="middle_name">Middle Name</label></td>
-                <td><input type="text" value="<%= record[middle_name] %>" name="middle_name"></td>
-            </tr>
-            <tr>
-                <td><label for="maiden_name">Maiden Name</label></td>
-                <td><input type="text" value="<%= record[maiden_name] %>" name="maiden_name"></td>
-            </tr>
-            <tr>
-                <td><label for="suffix">Suffix</label></td>
-                <td><input type="text" value="<%= record[suffix] %>" name="suffix"></td>
-            </tr>
-            <tr>
-                <td><label for="birth_year">Birth Year</label></td>
-                <td><input type="text" value="<%= record[birth_year] %>" name="birth_year"></td>
-            </tr>
-            <tr>
-                <td><label for="birth_month">Birth Month</label></td>
-                <td>
-                    <input type="text" value="<%= record[birth_month] %>" name="birth_month">
-                </td>
-            </tr>
-            <tr>
-                <td><label for="birth_day">Birth Day</label></td>
-                <td><input type="text" value="<%= record[birth_day] %>" name="birth_day"></td>
-            </tr>
-            <tr>
-                <td><label for="death_year">Death Year</label></td>
-                <td><input type="text" value="<%= record[death_year] %>" name="death_year"></td>
-            </tr>
-            <tr>
-                <td><label for="death_month">Death Month</label></td>
-                <td><input type="text" value="<%= record[death_month] %>" name="death_month"></td>
-            </tr>
-            <tr>
-                <td><label for="death_day">Death Day</label></td>
-                <td><input type="text" value="<%= record[death_day] %>" name="death_day"></td>
-            </tr>
-            <tr>
-                <td><label for="Section">Section</label></td>
-                <td><input type="text" value="<%= record[section] %>" name="section"></td>
-            </tr>
-            <tr>
-                <td><label for="lot">Lot</label></td>
-                <td><input type="text" value="<%= record[lot] %>" name="lot"></td>
-            </tr>
-            <tr>
-                <td><label for="moved_from"><%= field  %></label></td>
-                <td><input type="text" value="<%= record[veteran] %>" name="veteran"></td>
-            </tr>
-            <tr>
-                <td><label for="notes">Notes</label></td>
-                <td><input type="text" value="<%= record[notes] %>" name="notes"></td>
-            </tr>
-            <tr>
-                <td><label for="moved_from">Moved From</label></td>
-                <td><input type="text" value="<%= record[moved_from] %>" name="moved_from"></td>
-            </tr>
-            <tr>
-                <td><label for="moved_to">Moved To</label></td>
-                <td><input type="text" value="<%= record[moved_to] %>" name="moved_to"></td>
-            </tr>
-            <tr>
           
             <button type="submit">Update This Record</button>
         </form>

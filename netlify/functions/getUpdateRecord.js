@@ -58,7 +58,6 @@ exports.handler = async function (event, context) {
 
     //ID should always be unique, BUT ensure we always get only one record
     let dataObject = data[0];
-    console.log(dataObject)
     console.log(dataObject.memorial_id)
     let templatePath;
     let templateData;

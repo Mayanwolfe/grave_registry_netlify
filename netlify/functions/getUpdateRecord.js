@@ -52,13 +52,14 @@ exports.handler = async function (event, context) {
   //Execute query and handle errors
   try {
     let { data, error } = await query;
-    console.log(data)
     if (error) {
       throw error;
     }
 
     //ID should always be unique, BUT ensure we always get only one record
     let dataObject = data[0];
+    console.log(dataObject)
+    console.log(dataObject[0])
     let templatePath;
     let templateData;
 

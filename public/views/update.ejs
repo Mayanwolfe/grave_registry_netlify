@@ -103,20 +103,35 @@
                 <td><input type="text" value="<%= record.death_day %>" name="death_day"></td>
             </tr>
             <tr>
-                <td><label for="Section">Section</label></td>
-                <td><input type="text" value="<%= record.section %>" name="section"></td>
+                <td><label for="section">Section</label></td>
+                <td><select name="section" id="section">
+                    <option value="<%= record.section %>"><%= record.section %></option>
+                    <option value="">none/unknown</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="SINGLE">SINGLE</option>
+                  </select></td>
             </tr>
             <tr>
                 <td><label for="lot">Lot</label></td>
-                <td><input type="text" value="<%= record.lot %>" name="lot"></td>
+                <td><input type="number" value="<%= record.lot %>" name="lot"></td>
             </tr>
             <tr>
                 <td><label for="veteran">Veteran</label></td>
-                <td><input type="text" value="<%= record.veteran %>" name="veteran"></td>
+                <td><select name="veteran" id="veteran">
+                    <option value="<%= record.veteran %>"><%= record.veteran %></option>
+                    <option value=""></option>
+                    <option value="Y">Y</option>
+                  </select></td>
             </tr>
             <tr>
                 <td><label for="notes">Notes</label></td>
-                <td><input type="text" value="<%= record.notes %>" name="notes"></td>
+                <td><input type="text" value="<%= record.notes %>" name="notes" maxlength="500"></td>
             </tr>
             <tr>
                 <td><label for="moved_from">Moved From</label></td>

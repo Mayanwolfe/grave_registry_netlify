@@ -22,6 +22,7 @@ exports.handler = async function (event, context) {
       first_name,
       middle_name,
       maiden_name,
+      suffix,
       birth_date,
       death_date,
       age_sane,

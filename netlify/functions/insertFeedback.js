@@ -1,6 +1,7 @@
 const { createClient } = require('@supabase/supabase-js');
 const ejs = require('ejs');
 const path = require('path');
+const querystring = require('querystring');
 
 //connect to Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API_KEY);
@@ -10,6 +11,8 @@ exports.handler = async function (event, context) {
   try { 
   //Destructuring assignment of variables based on the POST query object 
   const formData = querystring.parse(event.body);
+
+  console.log(formData)
 
   // INSERT INTO user_reports (report_type, report_body) VALUES (formData)
 

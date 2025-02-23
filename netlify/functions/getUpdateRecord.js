@@ -52,6 +52,7 @@ exports.handler = async function (event, context) {
   //Execute query and handle errors
   try {
     let { data, error } = await query;
+    console.log(data)
     if (error) {
       throw error;
     }

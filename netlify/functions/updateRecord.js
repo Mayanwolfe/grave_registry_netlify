@@ -14,7 +14,7 @@ async function updateRecordInSupabase(supabase, formData) {
     const { data: currentData, error: fetchError } = await supabase
       .from('grave_register')
       .select('*')
-      .eq('ID', recordId)
+      .eq('memorial_id', recordId)
       .single();
 
     if (fetchError) {

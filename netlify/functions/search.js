@@ -8,7 +8,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_API
 exports.handler = async function (event, context) {
 
   //Destructuring assignment of variables based on the GET query object 
-  const { lastName, firstName, birthYear, deathYear } = event.queryStringParameters;
+  const { lastName, firstName, maidenName, birthYear, deathYear } = event.queryStringParameters;
 
   //console.log(event)
 
@@ -38,6 +38,7 @@ exports.handler = async function (event, context) {
   //Add optional elements to the query, based on the fields the user submitted
   if (lastName) query = query.ilike('last_name', `%${lastName}%`); //fuzzy match
   if (firstName) query = query.ilike('first_name', `%${firstName}%`); //fuzzy match
+  if (maidenName) query = query.ilike('maiden_name', `%${maidenName}%`); //fuzzy match
   if (birthYear) query = query.eq('birth_year', birthYear); //exact match
   if (deathYear) query = query.eq('death_year', deathYear); //exact match
 

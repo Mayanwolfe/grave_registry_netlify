@@ -33,7 +33,7 @@
       </form>      
     <h1>Update a Grave Record</h1>
     <p>Enter the Memorial ID of a specific record to see its information.</p>
-    <p>Make changes as needed, then click "Update This Record" to save the changes to the database. Please verify the changes are accurate prior to saving.</p>
+    <p>Make changes as needed, then click "Update This Record" to save the changes to the database. Please verify the changes are accurate prior to saving. If a field does not need to be populated, leave it blank.</p>
     <form action="/.netlify/functions/getUpdateRecord" method="get">
         <label for="memorialID">Interment ID to Update:</label>
         <input type="number" id="memorialID" name="memorialID">
@@ -78,29 +78,57 @@
             </tr>
             <tr>
                 <td><label for="birth_year">Birth Year</label></td>
-                <td><input type="text" value="<%= record.birth_year %>" name="birth_year"></td>
+                <td><input type="number" value="<%= record.birth_year %>" name="birth_year" min="1800" max="2050"></td>
             </tr>
             <tr>
                 <td><label for="birth_month">Birth Month</label></td>
-                <td>
-                    <input type="text" value="<%= record.birth_month %>" name="birth_month">
-                </td>
+                    <td><select name="section" id="section">
+                        <option value="<%= record.birth_month %>"><%= record.birth_month %></option>
+                        <option value="">none/unknown</option>
+                        <option value="Jan">Jan</option>
+                        <option value="Feb">Feb</option>
+                        <option value="Mar">Mar</option>
+                        <option value="Apr">Apr</option>
+                        <option value="May">May</option>
+                        <option value="Jun">Jun</option>
+                        <option value="Jul">Jul</option>
+                        <option value="Aug">Aug</option>
+                        <option value="Sep">Sep</option>
+                        <option value="Oct">Oct</option>
+                        <option value="Nov">Nov</option>
+                        <option value="Dec">Dec</option>
+                      </select></td>
             </tr>
             <tr>
                 <td><label for="birth_day">Birth Day</label></td>
-                <td><input type="text" value="<%= record.birth_day %>" name="birth_day"></td>
+                <td><input type="number" value="<%= record.birth_day %>" name="birth_day" min="1" max="31"></td>
             </tr>
             <tr>
                 <td><label for="death_year">Death Year</label></td>
-                <td><input type="text" value="<%= record.death_year %>" name="death_year"></td>
+                <td><input type="number" value="<%= record.death_year %>" name="death_year" min="1800" max="2050"></td>
             </tr>
             <tr>
                 <td><label for="death_month">Death Month</label></td>
-                <td><input type="text" value="<%= record.death_month %>" name="death_month"></td>
+                <td><select name="section" id="section">
+                    <option value="<%= record.death_month %>"><%= record.death_month %></option>
+                    <option value="">none/unknown</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
+                  </select></td>
             </tr>
             <tr>
                 <td><label for="death_day">Death Day</label></td>
-                <td><input type="text" value="<%= record.death_day %>" name="death_day"></td>
+                <td><input type="number" value="<%= record.death_day %>" name="death_day" min="1" max="31">></td>
             </tr>
             <tr>
                 <td><label for="section">Section</label></td>

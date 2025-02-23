@@ -26,7 +26,6 @@ async function updateRecordInSupabase(supabase, formData) {
     for (const key in formData) {
       if (formData[key] !== currentData[key] && key !== 'memorial_id') {
         updatePayload[key] = formData[key]
-        updatePayload[date_changed] = new Date().toISOString().split('T')[0]
       }
     }
 
@@ -36,11 +35,8 @@ async function updateRecordInSupabase(supabase, formData) {
       return { message: 'No fields were changed', data: currentData };
     }
 
-    // Add the changed date once the payload is confirmed to have changes
-    updatePayload['date_changed'] = new Date().toISOString().split('T')[0];
-
     console.log('Update payload:', updatePayload);
-    
+
     // Perform the update with the constructed payload
     const { data, error: updateError } = await supabase
       .from('grave_register')

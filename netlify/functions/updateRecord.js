@@ -25,11 +25,10 @@ async function updateRecordInSupabase(supabase, formData) {
     const updatePayload = {};
     for (const key in formData) {
       if (formData[key] != currentData[key] && key !== 'memorial_id') {
+        console.log(`form ${formData[key]} and current ${currentData[key]}`)
         updatePayload[key] = formData[key]
       }
     }
-
-    console.log('Update payload:', updatePayload);
 
     if (Object.keys(updatePayload).length === 0) {
       return { message: 'No fields were changed', data: currentData };

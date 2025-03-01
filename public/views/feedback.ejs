@@ -49,14 +49,20 @@ html, body {
   <p>Submit feedback and questions here.</p>
   
   <form action="/.netlify/functions/insertFeedback" method="POST" id="feedback-form">
-    <label for="report_type">Feedback Type</label>
-    <select name="report_type" id="report_type">
-      <option value="bug">Bug/Issue</option>
-      <option value="feature">Feature</option>
-      <option value="question">Question</option>
-    </select>
+    <div>
+      <label for="report_type">Feedback Type</label>
+      <select name="report_type" id="report_type">
+        <option value="bug">Bug/Issue</option>
+        <option value="feature">Feature</option>
+        <option value="question">Question</option>
+      </select>
+    </div>
+    <div>
     <textarea name="report_body" id="report_body" rows="4" cols="50"></textarea>
-    <button type="submit">Submit Feedback</button>
+    </div>
+    <div>
+      <button type="submit">Submit Feedback</button>
+    </div>
   </form>
     
   <% if (message) { %>

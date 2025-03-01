@@ -24,11 +24,16 @@ async function updateRecordInSupabase(supabase, formData) {
     // Construct the update payload with only changed fields by comparing against old record
     const updatePayload = {};
     for (const key in formData) {
-      if (formData[key] != currentData[key] && key !== 'memorial_id') {
-        console.log(`form ${formData[key]} and current ${currentData[key]}`)
-        updatePayload[key] = formData[key]
+      // Normalize values for comparison
+      const formValue = formData[key] === "" ? null : formData[key];  // Convert empty strings to null
+      const currentValue = currentData[key] === "" ? null : currentData[key]; // Just in case DB has empty strings
+    
+      if (formValue !== currentValue && key !== 'memorial_id') {
+        updatePayload[key] = formData[key]; // Keep original form value for submission
       }
     }
+
+    console.log(updatePayload)
 
     if (Object.keys(updatePayload).length === 0) {
       return { message: 'No fields were changed', data: currentData };

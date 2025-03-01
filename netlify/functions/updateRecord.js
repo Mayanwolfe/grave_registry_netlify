@@ -24,7 +24,7 @@ async function updateRecordInSupabase(supabase, formData) {
     // Construct the update payload with only changed fields by comparing against old record
     const updatePayload = {};
     for (const key in formData) {
-      if (formData[key] !== String(currentData[key]) && key !== 'memorial_id') {
+      if (formData[key] != currentData[key] && key !== 'memorial_id') {
         updatePayload[key] = formData[key]
       }
     }

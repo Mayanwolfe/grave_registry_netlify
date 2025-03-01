@@ -28,7 +28,7 @@ html, body {
     button {font-size: larger;}
     input {font-size: larger;}
     select {font-size: larger;}
-    textarea {font-size: medium;}
+    textarea {font-size: larger;}
     div { margin: 20px; }
     table { width: 100%; border-collapse: collapse; }
     th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
@@ -42,10 +42,10 @@ html, body {
   <div class="content">
 <header>
   <h1>Grandview Cemetery Plot Search</h1>
-  <form action="/" method="get">
-    <button type="submit">Return Home</button>
-  </form>
 </header>
+<form action="/" method="get">
+  <button type="submit">Return Home</button>
+</form>
   <p>Submit feedback and questions here.</p>
   
   <form action="/.netlify/functions/insertFeedback" method="POST" id="feedback-form">
@@ -70,8 +70,5 @@ html, body {
 
   <% } %>
 
-<footer>
-<p>Coded from scratch by Claire Bourdon (<a href="https://mayanwolfe.com">personal site</a>) using EJS and Supabase. Hosted on Netlify.</p>
-</footer>
 </body>
 </html>

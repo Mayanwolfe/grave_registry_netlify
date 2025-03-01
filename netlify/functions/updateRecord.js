@@ -25,9 +25,9 @@ async function updateRecordInSupabase(supabase, formData) {
     const updatePayload = {};
     for (const key in formData) {
       currentData[key] === null ? currentData[key] = "" : currentData[key]
-      if (formData[key] !== currentData[key] && key !== 'memorial_id') {
+      if (formData[key] != currentData[key] && key !== 'memorial_id') {
         updatePayload[key] = formData[key]
-        
+
       }
     }
 

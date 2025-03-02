@@ -34,6 +34,7 @@ exports.handler = async function (event, context) {
     first_name,
     middle_name,
     maiden_name,
+    suffix,
     birth_year,
     birth_month,
     birth_day,
